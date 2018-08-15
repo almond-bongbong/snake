@@ -89,7 +89,7 @@ function Snake() {
     };
 
     this.eat = function(pos) {
-        if (this.x / pos.x === 1 && this.y / pos.y === 1) {
+        if ((this.x / pos.x === 1 || isNaN(this.x / pos.x)) && (this.y / pos.y === 1 || isNaN(this.y / pos.y))) {
             this.total++;
             return true;
         } else {
