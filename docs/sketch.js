@@ -6,10 +6,6 @@ var s;
 var timer;
 var food;
 
-function setupElements() {
-
-}
-
 function setup() {
     con = document.getElementById('container');
     con.innerHTML = '';

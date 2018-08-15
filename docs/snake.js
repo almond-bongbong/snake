@@ -1,5 +1,4 @@
 function Snake() {
-    this.con = null;
     this.contW = null;
     this.contH = null;
     this.scl = 20;
@@ -23,7 +22,6 @@ function Snake() {
         sDom.style.border = '1px solid #000';
         sDom.style.backgroundColor = '#fff';
         this.dom = sDom;
-        this.con = con;
 
         con.appendChild(sDom);
     };
@@ -38,11 +36,6 @@ function Snake() {
                 return true;
             }
         }
-
-        // if (this.x < 0) console.log('game over');
-        // if (this.y < 0) console.log('game over');
-        // if (this.x + this.scl > this.contW) console.log('game over');
-        // if (this.y + this.scl > this.contH) console.log('game over');
     };
 
     this.update = function() {
@@ -97,7 +90,6 @@ function Snake() {
 
     this.eat = function(pos) {
         if (this.x / pos.x === 1 && this.y / pos.y === 1) {
-            console.log('eat!!');
             this.total++;
             return true;
         } else {
