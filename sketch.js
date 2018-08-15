@@ -1,6 +1,6 @@
 var contWidth = 600;
 var contHeight = 600;
-var interval = 130;
+var interval = 100;
 var con;
 var s;
 var timer;
