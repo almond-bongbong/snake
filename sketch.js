@@ -5,6 +5,12 @@ var con;
 var s;
 var timer;
 var food;
+var keyPending = {
+  ArrowUp: false,
+  ArrowDown: false,
+  ArrowLeft: false,
+  ArrowRight: false
+};
 
 function setup() {
     con = document.getElementById('container');
@@ -30,8 +36,11 @@ function setup() {
 }
 
 function keyPressed() {
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', function(e) {
         var key = e.key;
+
+        if (keyPending[key]) return;
+        keyPending[key] = true;
 
         if (key === 'ArrowUp') {
             s.dir(0, -1);
@@ -42,6 +51,11 @@ function keyPressed() {
         } else if (key === 'ArrowRight') {
             s.dir(1, 0);
         }
+    });
+
+    document.addEventListener('keyup', function(e) {
+      var key = e.key;
+      keyPending[key] = false;
     });
 }
 
@@ -54,7 +68,6 @@ function draw() {
     s.show();
     if (s.eat(food)) {
         food.updateLocation();
-        // con.appendChild(s.tail[s.total - 1].dom);
     }
 }
 

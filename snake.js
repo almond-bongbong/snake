@@ -9,6 +9,7 @@ function Snake() {
     this.dom = null;
     this.total = 0;
     this.tail = [];
+    this.dirPending = false;
 
     this.createDom = function(contW, contH, con) {
         this.contW = contW;
@@ -39,6 +40,7 @@ function Snake() {
     };
 
     this.update = function() {
+        this.dirPending = false;
         if (this.total > this.tail.length) {
             var newTail = new Snake();
             newTail.createDom(this.contW, this.contH, con);
@@ -80,6 +82,8 @@ function Snake() {
     };
 
     this.dir = function(x, y) {
+        if (this.dirPending) return;
+        this.dirPending = true;
         if (this.total === 0 || Math.abs(this.xspeed) !== Math.abs(x)) {
             this.xspeed = x;
         }
