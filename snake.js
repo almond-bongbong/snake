@@ -29,7 +29,7 @@ function Snake() {
     this.death = function() {
         for (var i = 0; i < this.tail.length; i++) {
             var pos = this.tail[i];
-            if ((this.x / pos.x === 1 || isNaN(this.x / pos.x)) && (this.y / pos.y === 1 || isNaN(this.y / pos.y))) {
+            if (this.x === pos.x && this.y === pos.y) {
                 alert('score : ' + this.total);
                 this.total = 0;
                 this.tail = [];
@@ -89,7 +89,7 @@ function Snake() {
     };
 
     this.eat = function(pos) {
-        if ((this.x / pos.x === 1 || isNaN(this.x / pos.x)) && (this.y / pos.y === 1 || isNaN(this.y / pos.y))) {
+        if (this.x === pos.x && this.y === pos.y) {
             this.total++;
             return true;
         } else {
