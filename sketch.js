@@ -1,5 +1,5 @@
-var contWidth = 600;
-var contHeight = 600;
+var contWidth = 400;
+var contHeight = 400;
 var interval = 100;
 var con;
 var s;
@@ -18,7 +18,7 @@ function setup() {
     con.style.position = 'relative';
     con.style.width = contWidth + 'px';
     con.style.height = contHeight + 'px';
-    con.style.backgroundColor = '#333';
+    con.style.backgroundColor = '#000';
 
     s = new Snake();
     s.createDom(contWidth, contHeight, con);
