@@ -6,7 +6,40 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<div id="container"></div>
+
+<div class="con-wrap">
+    <div id="container"></div>
+    <div class="score-area">
+        <div class="title">Score</div>
+        <div class="num" id="score">0</div>
+    </div>
+
+    <div class="ranking">
+        <div class="title">Ranking</div>
+        <ul>
+            <li>
+                <span class="num">1.</span>
+                <span class="name">접니다</span>
+                <span class="rscore">15 점</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="gameover">
+    <div class="inner">
+        <p>Game Over ㅠ_ㅠ</p>
+        <div class="score">
+            <span class="num" id="result-score">0</span>점
+        </div>
+        <div class="save-area">
+            <input type="text" id="id" name="id" placeholder="이름을 입력해주세요.">
+        </div>
+        <div class="btn-area">
+            <a href="#" class="btn save">Save</a>
+        </div>
+    </div>
+</div>
 
 <script src="snake.js"></script>
 <script src="food.js"></script>

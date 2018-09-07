@@ -31,10 +31,10 @@ function Snake() {
         for (var i = 0; i < this.tail.length; i++) {
             var pos = this.tail[i];
             if (this.x === pos.x && this.y === pos.y) {
-                alert('score : ' + this.total);
-                this.total = 0;
-                this.tail = [];
-                return true;
+                document.querySelector('.gameover').style.visibility = 'visible';
+                document.getElementById('result-score').innerText = this.total;
+                document.getElementById('container').innerHTML = '';
+                return false;
             }
         }
     };
@@ -95,6 +95,7 @@ function Snake() {
     this.eat = function(pos) {
         if (this.x === pos.x && this.y === pos.y) {
             this.total++;
+            document.getElementById('score').innerText = this.total;
             return true;
         } else {
             return false;
