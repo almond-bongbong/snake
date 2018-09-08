@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>snake</title>
     <link rel="stylesheet" href="style.css"/>
+    <script src="jquery-3.1.1.min.js"></script>
 </head>
 <body>
 
@@ -40,6 +41,68 @@
         </div>
     </div>
 </div>
+
+<script>
+    function getScore() {
+        $.ajax({
+            url : 'https://api.almondbongbong.com/snake/score',
+            type : 'get',
+            dataType : 'json',
+            success : function(data) {
+                var list = data;
+                var $con = $('.ranking > ul');
+                $con.empty();
+
+                for(var i=0; i<list.length; i++) {
+                    var id = list[i].id;
+                    var score = list[i].score;
+                    var item = '';
+                    item += '<li>';
+                    item += '<span class="num">'+(i+1)+'.</span>';
+                    item += '<span class="name">'+id+'</span>';
+                    item += '<span class="rscore">'+score+' 점</span>';
+                    item += '</li>';
+                    $con.append(item.toString());
+                }
+            },
+            error: function () {
+                alert("웹페이지에 문제가 발생 하였습니다.");
+                // location.reload();
+                return false;
+            }
+        });
+    }
+
+    getScore();
+
+    $('.gameover .btn').on('click', function(e) {
+        var id = $('#id').val();
+        var score = $('#score').text();
+
+        $.ajax({
+            url : 'https://api.almondbongbong.com/snake/score',
+            type : 'post',
+            contentType: 'application/json',
+            data : JSON.stringify({
+                id: id,
+                score: score
+            }),
+            success : function(data) {
+                if(data > 0) {
+                    alert('저장 되었습니다.');
+                    location.reload();
+                }
+            },
+            error: function () {
+                alert("웹페이지에 문제가 발생 하였습니다.");
+                location.reload();
+                return false;
+            }
+        });
+
+        e.preventDefault();
+    });
+</script>
 
 <script src="snake.js"></script>
 <script src="food.js"></script>
